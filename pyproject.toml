@@ -1,0 +1,29 @@
+[project]
+name = "momentum"
+version = "0.0.1"
+authors = [{ name = "scott.mckean@databricks.com" }]
+requires-python = ">=3.12.0"
+
+dependencies = [
+    "databricks-connect==16.3.2",
+    "databricks-dlt",
+    "mlflow==3.1.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ipykernel"
+]
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+testpaths = [
+    "tests",
+]
+filterwarnings = [
+    "ignore:distutils Version classes are deprecated:DeprecationWarning",
+]
+
+[project.scripts]
+main = "momentum.main:main"

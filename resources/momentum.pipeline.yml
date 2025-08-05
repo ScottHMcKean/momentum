@@ -1,0 +1,13 @@
+# The main pipeline for momentum
+resources:
+  pipelines:
+    momentum_pipeline:
+      name: momentum_pipeline
+      catalog: shm
+      schema: momentum_${bundle.target}
+      serverless: true
+      libraries:
+        - notebook:
+            path: ../src/dlt_pipeline.ipynb
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}/src
