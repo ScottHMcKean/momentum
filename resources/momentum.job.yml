@@ -5,14 +5,10 @@ resources:
       name: momentum_job
 
       trigger:
-        # Run this job every day, exactly one day from the last run; see https://docs.databricks.com/api/workspace/jobs/create#trigger
+        pause_status: PAUSED
         periodic:
           interval: 1
           unit: DAYS
-
-      #email_notifications:
-      #  on_failure:
-      #    - your_email@example.com
 
       tasks:
         - task_key: notebook_task
@@ -36,6 +32,6 @@ resources:
       environments:
         - environment_key: default
           spec:
-            client: "3"
+            environment_version: "3"
             dependencies:
               - ../dist/*.whl
